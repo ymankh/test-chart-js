@@ -16,9 +16,9 @@ export interface ChartTheme {
 const DEFAULT_THEME_NAME = 'default';
 
 const DEFAULT_THEME: ChartTheme = {
-  palette: ['#2563eb', '#ef4444', '#14b8a6', '#f59e0b', '#8b5cf6', '#f97316'],
-  borderColor: '#1f2937',
-  backgroundOpacity: 0.35,
+  palette: ['#2563eb', '#22c55e', '#f97316', '#0ea5e9', '#a855f7', '#eab308'],
+  borderColor: '#0f172a',
+  backgroundOpacity: 0.32,
   globalOptions: {
     responsive: true,
     maintainAspectRatio: false,
@@ -26,15 +26,16 @@ const DEFAULT_THEME: ChartTheme = {
       legend: {
         position: 'top',
         labels: {
-          color: '#1f2937',
+          color: '#0f172a',
           boxWidth: 16,
+          font: { weight: 500 },
         },
       },
       tooltip: {
         backgroundColor: '#111827',
-        titleColor: '#f9fafb',
-        bodyColor: '#f9fafb',
-        borderColor: 'rgba(255,255,255,0.06)',
+        titleColor: '#f8fafc',
+        bodyColor: '#e5e7eb',
+        borderColor: 'rgba(241,245,249,0.2)',
         borderWidth: 1,
         padding: 10,
       },
@@ -42,32 +43,58 @@ const DEFAULT_THEME: ChartTheme = {
     elements: {
       line: {
         tension: 0.35,
-        borderWidth: 2,
+        borderWidth: 3,
+      },
+      bar: {
+        borderWidth: 0,
       },
     },
     scales: {
       x: {
-        grid: { display: false },
-        ticks: { color: '#4b5563' },
+        grid: { color: 'rgba(148,163,184,0.2)' },
+        ticks: { color: '#475569' },
       },
       y: {
         grid: { color: 'rgba(148,163,184,0.2)' },
-        ticks: { color: '#4b5563' },
+        ticks: { color: '#475569' },
+        beginAtZero: true,
       },
     },
   } as AnyChartOptions,
+  typeOptions: {
+    radar: {
+      scales: {
+        r: {
+          angleLines: { color: 'rgba(148,163,184,0.3)' },
+          grid: { color: 'rgba(148,163,184,0.25)' },
+          pointLabels: { color: '#0f172a', font: { size: 12 } },
+          ticks: { display: false },
+        },
+      },
+    } as AnyChartOptions,
+    line: {
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top',
+        },
+      },
+    } as AnyChartOptions,
+  },
   datasetDefaults: {
     line: {
       fill: true,
       pointRadius: 4,
       pointHoverRadius: 6,
+      borderCapStyle: 'round',
     } as Partial<AnyChartDataset>,
     radar: {
       fill: true,
       borderWidth: 2,
     } as Partial<AnyChartDataset>,
     bar: {
-      borderWidth: 1,
+      borderRadius: 8,
+      borderSkipped: false,
     } as Partial<AnyChartDataset>,
   },
 };

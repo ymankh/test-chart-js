@@ -118,7 +118,7 @@ File: `src/app/components/bar-chart/bar-chart.ts`
   [dataset]="{ label: 'Revenue', borderRadius: 12 }"
   [options]="{ scales: { y: { ticks: { stepSize: 30 } } } }"
   [plugins]="[barDataLabels]"
-  [theme]="'midnight'"
+  [theme]="'aurora'"
 ></app-bar-chart>
 ```
 
@@ -186,6 +186,8 @@ Use cases:
 ## Theming
 
 Themes define palette colours, default opacities, global options, and dataset overrides per chart type. They are stored in the `ChartPreferencesService` and applied automatically.
+
+The demo showcases three curated presets: `aurora` (cool, vibrant), `sunset` (warm, contrasty), and `twilight` (night-friendly).
 
 ### Registering Themes
 

@@ -79,7 +79,12 @@ export class ChartComponent implements AfterViewInit, OnDestroy {
   private readonly canvasRef = viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
   private chartInstance?: Chart<ChartType>;
 
-  private readonly themedConfiguration = computed(() => this.buildConfig());
+  private readonly themedConfiguration = computed(() => {
+    if (!this.theme()) {
+      this.chartPreferences.activeTheme();
+    }
+    return this.buildConfig();
+  });
 
   constructor(private readonly chartPreferences: ChartPreferencesService) {
     ensureChartControllersRegistered();
@@ -149,3 +154,4 @@ export class ChartComponent implements AfterViewInit, OnDestroy {
     return this.chartPreferences.applyTheme(config, this.theme()) as GenericChartConfiguration;
   }
 }
+
